@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ── Primary SEO ── -->
+<title>CordiDialect — Kankanaey &amp; Ibaloi Dictionary | Baguio, Cordillera</title>
+<meta name="description" content="Free online Kankanaey and Ibaloi dictionary from the Cordillera, Philippines. Search thousands of words with English and Tagalog translations, audio pronunciations, and part-of-speech labels.">
+<meta name="keywords" content="Kankanaey dictionary, Ibaloi dictionary, Cordillera dialect, Baguio language, Philippine indigenous language, Kankanaey words, Ibaloi words, Cordillera vocabulary, CordiDialect, Benguet dialect">
+<meta name="author" content="CordiDialect">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cordidialect.vercel.app/">
+
+<!-- ── Open Graph (Facebook / LinkedIn) ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cordidialect.vercel.app/">
+<meta property="og:title" content="CordiDialect — Kankanaey &amp; Ibaloi Dictionary">
+<meta property="og:description" content="Free online dictionary for Kankanaey and Ibaloi, the indigenous languages of the Cordillera region in the Philippines. Search words, hear pronunciations, and explore the culture.">
+<meta property="og:image" content="https://www.uc-bcf.edu.ph/assets/images/uc_logo_green_ext_h150.png">
+<meta property="og:locale" content="en_PH">
+<meta property="og:site_name" content="CordiDialect">
+
+<!-- ── Twitter Card ── -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CordiDialect — Kankanaey &amp; Ibaloi Dictionary">
+<meta name="twitter:description" content="Free online dictionary for Kankanaey and Ibaloi, the indigenous languages of the Cordillera, Philippines.">
+<meta name="twitter:image" content="https://www.uc-bcf.edu.ph/assets/images/uc_logo_green_ext_h150.png">
+
+<!-- ── Structured Data (JSON-LD) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CordiDialect",
+  "url": "https://cordidialect.vercel.app/",
+  "description": "Free online Kankanaey and Ibaloi dictionary from the Cordillera, Philippines.",
+  "inLanguage": ["en", "fil"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://cordidialect.vercel.app/?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light cd-navbar">
+  <div class="container-fluid cd-nav-inner">
+    <a class="navbar-brand cd-brand" href="#" onclick="showPage('home');return false;">
+      <img src="https://www.uc-bcf.edu.ph/assets/images/uc_logo_green_ext_h150.png" class="cd-brand-icon" alt="uc logo">
+    </a>
+    <button class="navbar-toggler cd-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bsNavLinks" aria-controls="bsNavLinks" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="bsNavLinks">
+      <ul class="navbar-nav ms-auto" id="navLinks">
+        <li class="nav-item"><a href="#" class="nav-link active" data-page="home" onclick="showPage('home');return false;">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-page="words" onclick="showPage('words');return false;">Word List</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-page="library" onclick="showPage('library');return false;">&#128218; Library</a></li>
+        <li class="nav-item"><a href="#" class="nav-link nav-link--premium" data-page="premium" onclick="showPage('premium');return false;">&#9733; Premium</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home Page -->
+<div id="page-home" class="page active">
+  <div class="container">
+    <header class="site-header">
+      <h1 style="color:#006633; display: inline; font-style: italic;">Cordi</h1><h1 style="color:#7f1010; display: inline; font-style: italic;">Dialect</h1>
+      <h2>Kankanaey &amp; Ibaloi<br><em>Dictionary</em></h2>
+      <p class="subtitle">Preserving language and culture</p>
+    </header>
+
+    <div class="search-panel">
+      <div class="lang-tabs">
+        <button class="lang-tab active" data-lang="kankanaey">Kankanaey</button>
+        <button class="lang-tab" data-lang="ibaloi">Ibaloi</button>
+      </div>
+      <div class="search-mode-tabs">
+        <button class="mode-tab active" data-mode="native">Search by Native Word</button>
+        <button class="mode-tab" data-mode="english">Search by English</button>
+      </div>
+      <div class="search-row">
+        <input type="text" id="wordInput" placeholder="Type to search&hellip;" autocomplete="off">
+        <button id="searchBtn">Search</button>
+      </div>
+      <div id="suggestions" class="suggestions hidden"></div>
+    </div>
+
+    <div id="result" class="result-area"></div>
+  </div>
+</div>
+
+<!-- Word List Page -->
+<div id="page-words" class="page">
+  <div class="container container--wide">
+    <header class="words-header">
+      <h2 class="words-title">Word <span style="color: #c0392b;">List</span></h2>
+      <p class="subtitle">Browse all entries by language</p>
+    </header>
+    <div class="words-controls">
+      <div class="lang-tabs words-lang-tabs">
+        <button class="lang-tab active" data-wlang="kankanaey">Kankanaey</button>
+        <button class="lang-tab" data-wlang="ibaloi">Ibaloi</button>
+      </div>
+      <div class="words-filters">
+        <input type="text" id="wordsFilter" placeholder="Search words&hellip;" autocomplete="off">
+      </div>
+    </div>
+    <div class="alpha-scroll" id="alphaScroll"></div>
+    <div class="words-stats" id="wordsStats"></div>
+    <div class="words-table-wrap">
+      <table class="words-table" id="wordsTable">
+        <thead>
+          <tr>
+            <th class="col-word sortable" data-col="word">Word <span class="sort-icon">&#8597;</span></th>
+            <th class="col-english sortable" data-col="english">English <span class="sort-icon">&#8597;</span></th>
+            <th class="col-tagalog">Tagalog</th>
+            <th class="col-pos sortable" data-col="part_of_speech">Part of Speech <span class="sort-icon">&#8597;</span></th>
+          </tr>
+        </thead>
+        <tbody id="wordsBody"></tbody>
+      </table>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</div>
+
+
+<!-- Library Page -->
+<div id="page-library" class="page">
+  <div class="container">
+    <header class="site-header">
+      <h1>My <span style="color: #c0392b;">Library</span></h1>
+      <p class="subtitle">Your word history &amp; saved words</p>
+    </header>
+
+    <!-- Premium gate banner (shown when not unlocked) -->
+    <div class="library-gate hidden" id="libraryGate">
+      <div class="gate-icon" style="font-size:2rem;margin-bottom:8px;">&#9733;</div>
+      <p>Word History and Saved Words are <strong>premium features</strong>.</p>
+      <button class="btn-gate-unlock" style="margin-top:12px;" onclick="showPage('premium')">Unlock for &#8369;99</button>
+    </div>
+
+    <!-- Library content (shown when unlocked) -->
+    <div class="library-content hidden" id="libraryContent">
+
+      <!-- Tabs -->
+      <div class="lib-tabs" id="libTabs">
+        <button class="lib-tab active" data-libtab="history">&#128338; History</button>
+        <button class="lib-tab" data-libtab="saved">&#9733; Saved Words</button>
+      </div>
+
+      <!-- History panel -->
+      <div class="lib-panel active" id="libPanel-history">
+        <div class="lib-toolbar">
+          <span class="lib-count" id="historyCount"></span>
+          <button class="lib-clear-btn" id="clearHistoryBtn">Clear all</button>
+        </div>
+        <div class="lib-list" id="historyList"></div>
+      </div>
+
+      <!-- Saved panel -->
+      <div class="lib-panel" id="libPanel-saved">
+        <div class="lib-toolbar">
+          <span class="lib-count" id="savedCount"></span>
+          <button class="lib-clear-btn" id="clearSavedBtn">Clear all</button>
+        </div>
+        <div class="lib-list" id="savedList"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Premium Page -->
+<div id="page-premium" class="page">
+  <div class="container">
+    <header class="site-header">
+      <h1>Unlock <em>Premium</em></h1>
+      <p class="subtitle">One-time unlock &middot; No subscription</p>
+    </header>
+
+    <div class="premium-status hidden" id="premiumStatus">
+      <span class="premium-status-icon">&#10003;</span>
+      <span>Premium unlocked &mdash; thank you for your support!</span>
+    </div>
+
+    <div class="pricing-card" id="pricingCard">
+      <div class="pricing-header">
+        <div class="pricing-price">&#8369;99</div>
+        <div class="pricing-label">One-time unlock</div>
+      </div>
+      <ul class="pricing-features">
+        <li class="pricing-feature free">
+          <span class="pf-icon pf-free">&#10003;</span>
+          <span><strong>Basic dictionary search</strong> &mdash; always free</span>
+        </li>
+        <li class="pricing-feature free">
+          <span class="pf-icon pf-free">&#10003;</span>
+          <span><strong>Word list browsing</strong> &mdash; always free</span>
+        </li>
+        <li class="pricing-feature premium">
+          <span class="pf-icon pf-star">&#9733;</span>
+          <span><strong>Audio pronunciation</strong> &mdash; hear every word spoken</span>
+        </li>
+        <li class="pricing-feature premium">
+          <span class="pf-icon pf-star">&#9733;</span>
+          <span><strong>Word history</strong> &mdash; track recently looked-up words</span>
+        </li>
+        <li class="pricing-feature premium">
+          <span class="pf-icon pf-star">&#9733;</span>
+          <span><strong>Saved words</strong> &mdash; build your personal vocabulary list</span>
+        </li>
+
+      </ul>
+      <a href="https://forms.gle/caS4UZpKrK9jurZN6" target="_blank" rel="noopener" class="btn-pay">
+        Pay &#8369;99 &rarr; Get Code
+      </a>
+      <p class="pricing-note">After payment you will receive a code. Enter it below to unlock all premium features.</p>
+    </div>
+
+    <div class="redeem-box" id="redeemBox">
+      <p class="redeem-label">Already have a code?</p>
+      <div class="redeem-row">
+        <input type="text" id="redeemInput" placeholder="Enter your unlock code" autocomplete="off" spellcheck="false">
+        <button id="redeemBtn">Unlock</button>
+      </div>
+      <p class="redeem-error hidden" id="redeemError">Invalid code. Please check and try again.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Word detail modal -->
+<div id="wordModal" class="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">x</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- Premium gate modal -->
+<div id="premiumModal" class="modal-overlay">
+  <div class="modal-card modal-card--gate">
+    <button class="modal-close" id="premiumModalClose">x</button>
+    <div class="gate-icon">&#9733;</div>
+    <h3 class="gate-title">Premium Feature</h3>
+    <p class="gate-body" id="gateBody">This feature is available to premium users.</p>
+    <div class="gate-actions">
+      <button class="btn-gate-unlock" onclick="showPage('premium');closePremiumModal()">Unlock for &#8369;99</button>
+      <button class="btn-gate-cancel" onclick="closePremiumModal()">Maybe later</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
