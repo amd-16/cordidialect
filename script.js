@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════
    PREMIUM / LICENSE SYSTEM
    ══════════════════════════════════════════════════ */
-const VALID_CODES = ['CORD-2024-PREM', 'KORD-ALPHA-001', 'IBA-UNLOCK-777']
+const VALID_CODES = ['CODI-2026-PREM', 'KAN-ALPHA-001', 'IBA-UNLOCK-777']
 function hashCode(str) {
   let h = 0
   for (let i = 0; i < str.length; i++) h = Math.imul(31, h) + str.charCodeAt(i) | 0
